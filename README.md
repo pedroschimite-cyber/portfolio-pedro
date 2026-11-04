@@ -1,6 +1,553 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+    <style>
+
+/* ==========================================
+   PORTFÓLIO DE FOTOGRAFIA
+   Estilos gerais
+========================================== */
+
+/* CORES DO SITE */
+:root {
+    --azul: #2396aa;
+    --azul-escuro: #123b45;
+    --azul-claro: #dceff0;
+    --fundo: #f7f8f6;
+    --branco: #ffffff;
+    --texto: #26383c;
+    --texto-suave: #68777a;
+}
+
+/* CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background-color: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+section {
+    scroll-margin-top: 85px;
+}
+
+
+/* ==========================================
+   CABEÇALHO E MENU
+========================================== */
+
+.cabecalho {
+    width: 100%;
+    min-height: 78px;
+    padding: 18px 7%;
+    background-color: var(--branco);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    box-shadow: 0 2px 15px rgba(18, 59, 69, 0.06);
+}
+
+.logo {
+    color: var(--azul-escuro);
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: var(--azul);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    color: var(--texto);
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: var(--azul);
+}
+
+
+/* ==========================================
+   TEXTOS E TÍTULOS
+========================================== */
+
+.etiqueta {
+    color: var(--azul);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+
+.titulo-secao {
+    margin-bottom: 42px;
+}
+
+.titulo-secao h2,
+.sobre h2,
+.contato h2 {
+    color: var(--azul-escuro);
+    font-size: clamp(2.3rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 18px;
+}
+
+.titulo-secao h2 span,
+.sobre h2 span {
+    color: var(--azul);
+}
+
+.descricao-secao {
+    color: var(--texto-suave);
+    max-width: 10000px;
+    font-size: 1.2rem;
+}
+
+/* ==========================================
+   BOTÕES
+========================================== */
+
+.botao {
+    display: inline-block;
+    padding: 14px 25px;
+    border-radius: 4px;
+    background-color: var(--azul);
+    color: var(--branco);
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.botao:hover {
+    background-color: var(--azul-escuro);
+    transform: translateY(-3px);
+}
+
+.botao-claro {
+    background-color: var(--branco);
+    color: var(--azul-escuro);
+}
+
+.botao-claro:hover {
+    background-color: var(--azul-claro);
+    color: var(--azul-escuro);
+}
+
+
+/* ==========================================
+   INÍCIO / CAPA
+========================================== */
+
+.inicio {
+    min-height: 620px;
+    padding: 85px 7%;
+
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 55px;
+
+    background-color: var(--azul-claro);
+}
+
+.inicio-conteudo h1 {
+    color: var(--azul-escuro);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    margin-bottom: 22px;
+}
+
+.inicio-conteudo h1 span {
+    color: var(--azul);
+}
+
+.texto-inicio {
+    color: var(--texto-suave);
+    max-width: 480px;
+    margin-bottom: 30px;
+}
+
+.inicio-imagem {
+    height: 430px;
+    background-color: #c5dfe1;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.inicio-imagem img {
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ==========================================
+   SOBRE MIM
+========================================== */
+
+.secao {
+    padding: 100px 7%;
+}
+
+.sobre {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: center;
+    gap: 75px;
+
+    background-color: var(--branco);
+}
+
+.sobre-imagem {
+    height: 430px;
+    background-color: var(--azul-claro);
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.sobre-imagem img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.sobre-conteudo p:not(.etiqueta) {
+    color: var(--texto-suave);
+    margin-bottom: 18px;
+    max-width: 650px;
+}
+
+
+/* ==========================================
+   VISÃO E MISSÃO
+========================================== */
+
+.valores {
+    background-color: var(--fundo);
+}
+
+.valores-grade {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.valor {
+    background-color: var(--branco);
+    padding: 38px;
+    border-radius: 8px;
+    border-top: 5px solid var(--azul);
+}
+
+.valor-numero {
+    color: var(--azul-claro);
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.valor h3 {
+    color: var(--azul-escuro);
+    font-size: 1.6rem;
+    margin: 12px 0;
+}
+
+.valor p {
+    color: var(--texto-suave);
+}
+
+
+/* ==========================================
+   EXPERIÊNCIAS
+========================================== */
+
+.experiencias {
+    background-color: var(--azul-claro);
+}
+
+.experiencias-grade {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}
+
+.experiencia {
+    background-color: var(--branco);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.experiencia-foto {
+    height: 80%;
+    width: 100%;
+    background-color: #c5dfe1;
+}
+
+.experiencia-foto img {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.experiencia-texto {
+    padding: 28px;
+}
+
+.categoria {
+    color: var(--azul);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.experiencia-texto h3 {
+    color: var(--azul-escuro);
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.experiencia-texto p:last-child {
+    color: var(--texto-suave);
+}
+
+
+/* ==========================================
+   PROJETOS / GALERIA
+========================================== */
+
+.projetos {
+    background-color: var(--branco);
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.foto-galeria {
+    aspect-ratio: 3 / 4; /* Formato vertical */
+    height: auto;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: var(--azul-claro);
+    position: relative;
+}
+
+.foto-galeria img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.foto-galeria:hover img {
+    transform: scale(1.06);
+}
+
+.foto-galeria figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    padding: 15px;
+    color: var(--branco);
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   CONTATO
+========================================== */
+
+.contato {
+    padding: 90px 7%;
+    text-align: center;
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+}
+
+.contato h2 {
+    color: var(--branco);
+}
+
+.contato > p:not(.etiqueta) {
+    margin-bottom: 25px;
+    color: #dceff0;
+}
+
+.contato .etiqueta {
+    color: #80d2df;
+}
+
+
+/* ==========================================
+   RODAPÉ
+========================================== */
+
+.rodape {
+    padding: 25px 7%;
+    background-color: #0b2930;
+    color: var(--branco);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.rodape p {
+    font-size: 0.85rem;
+}
+
+.rodape a {
+    color: #80d2df;
+    font-size: 0.85rem;
+}
+
+
+/* ==========================================
+   RESPONSIVIDADE PARA TABLETS E CELULARES
+========================================== */
+
+@media (max-width: 900px) {
+
+    .cabecalho {
+        flex-direction: column;
+    }
+
+    .menu {
+        gap: 15px;
+    }
+
+    .inicio {
+        grid-template-columns: 1fr;
+    }
+
+    .inicio-imagem {
+        height: 350px;
+    }
+
+    .sobre {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .sobre-imagem {
+        height: 350px;
+    }
+
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* CELULARES */
+@media (max-width: 600px) {
+
+    .cabecalho {
+        padding: 18px 5%;
+    }
+
+    .menu {
+        gap: 12px;
+    }
+
+    .menu a {
+        font-size: 0.78rem;
+    }
+
+    .inicio {
+        padding: 65px 6%;
+        gap: 35px;
+    }
+
+    .inicio-conteudo h1 {
+        font-size: 2.8rem;
+    }
+
+    .inicio-imagem {
+        height: 280px;
+    }
+
+    .secao {
+        padding: 65px 6%;
+    }
+
+    .sobre-imagem {
+        height: 300px;
+    }
+
+    .valores-grade,
+    .experiencias-grade,
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .valor {
+        padding: 28px;
+    }
+
+  .foto-galeria {
+    aspect-ratio: 3 / 4;
+    height: auto;
+}
+    .contato {
+        padding: 65px 6%;
+    }
+
+    .rodape {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
+    </style>
 
 <head>
     <!-- Configurações da página -->
